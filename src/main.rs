@@ -5,10 +5,13 @@ use std::collections::hash_map::Entry::Vacant;
 use std::collections::hash_map::Entry::Occupied;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    let file = &args[1];
+    print_calories();
 
-    let split = get_lines(&file);
+    
+}
+
+fn print_calories(){
+    let split = get_lines(&"./Day1/input.txt");
     let values = get_values(split);
 
     let mut a: Vec<i32> = values.into_values().collect();
