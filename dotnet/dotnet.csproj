@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Day2\day2sample.txt" />
+    <None Remove="Day3\day3part2sample.txt" />
     <None Remove="Day3\sample.txt" />
   </ItemGroup>
 
@@ -17,6 +18,7 @@
 		<Copy SourceFiles="..\Day2\input.txt" DestinationFolder="$(OutDir)" />
 		<Copy SourceFiles="Day3\sample.txt" DestinationFolder="$(OutDir)" />
 		<Copy SourceFiles="Day3\day3input.txt" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="Day3\day3part2sample.txt" DestinationFolder="$(OutDir)" />
 
 	</Target>
   <ItemGroup>
@@ -24,6 +26,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Day2\day2sample.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Day3\day3part2sample.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Day3\sample.txt">

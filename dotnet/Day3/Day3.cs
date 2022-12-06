@@ -40,5 +40,30 @@ namespace dotnet.Day3
             }
             return character % 32;
         }
+
+        public static int GetBadgePriorities(string[] lines)
+        {
+            int count = 0;
+            int sum = 0;
+            while (true)
+            {
+                if (count == lines.Length)
+                {
+                    break;
+                }
+
+                var set = lines.Skip(count).Take(3).ToArray();
+                var commonChar = GetCommonChar(set);
+                sum += GetScore(commonChar);
+                count += 3;
+            }
+            return sum;
+        }
+
+        public static char GetCommonChar(string[] lines)
+        {
+            var joined = lines[0].Join(lines[1], inner => inner, outer => outer, (c, inner) => inner).Join(lines[2], inner => inner, outer => outer, (c, inner) => inner);
+            return joined.Distinct().Single();
+        }
     }
 }

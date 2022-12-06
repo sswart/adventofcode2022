@@ -35,5 +35,12 @@ namespace dotnet.Day3
             Day3.GetCommonCharacter(lines[1]).Should().Be('L');
             Day3.GetScore('L').Should().Be(38);
         }
+
+        [Fact]
+        public void BadgePriorities_70()
+        {
+            var lines = File.ReadAllLines("day3part2sample.txt");
+            Day3.GetBadgePriorities(lines).Should().Be(70);
+        }
     }
 }
