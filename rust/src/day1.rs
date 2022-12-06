@@ -1,10 +1,11 @@
 use std::collections::HashMap;
-use std::fs;
 use std::collections::hash_map::Entry::Vacant;
 use std::collections::hash_map::Entry::Occupied;
 
+use crate::filereader;
+
 pub fn print_calories(){
-    let split = get_lines(&"./Day1/input.txt".to_string());
+    let split = filereader::get_lines(&"./Day1/input.txt".to_string());
     let values = get_values(split);
 
     let mut a: Vec<i32> = values.into_values().collect();
@@ -41,22 +42,11 @@ fn get_values(split: Vec<String>) -> HashMap<i32, i32> {
     return calory_counts;
 }
 
-fn get_lines(file_path: &String) -> Vec<String> {
-    let contents = fs::read_to_string(file_path).expect("Should be able to read the file");
-    return contents.lines().map(|l| l.to_string()).collect();
-}
+
 
 #[cfg(test)]
 mod tests{
     use super::*;
-
-    #[test]
-    fn get_lines_not_empty() {
-        let lines = get_lines(&"./Day1/input.txt".to_string());
-        assert!(!lines.is_empty());
-    }
-
-
     #[test]
     fn get_values_correct_maximum() {
         let input = ["", "1", "2", "", "8"].map(|s| s.to_string()).to_vec();
