@@ -1,8 +1,9 @@
-﻿
-using dotnet;
+﻿using dotnet.Day2;
+using dotnet.Day3;
 
-var lines = await File.ReadAllLinesAsync("input.txt");
-Day2.GetScore( lines);
+var lines = await File.ReadAllLinesAsync("day3input.txt");
 
-var predictedScore = Day2.PredictMove(lines);
-Console.WriteLine($"Predicted score: {predictedScore}");
+
+var score = Day3.CalculateSumOfPriorities(lines);
+
+Console.WriteLine($"{score}");

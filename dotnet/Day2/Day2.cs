@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
 
-namespace dotnet
+namespace dotnet.Day2
 {
-    internal class Day2
+    internal class Day2Impl
     {
-        public static int PredictMove(string[] lines) 
+        public static int PredictMove(string[] lines)
         {
             int score = 0;
-            foreach(var line in lines)
+            foreach (var line in lines)
             {
                 var chars = line.Split(' ').Select(c => c.First()).ToArray();
                 if (chars.Length != 2)
@@ -75,7 +75,7 @@ namespace dotnet
             Console.WriteLine($"Total score: {score}");
             return score;
         }
-        
+
         static Move ParseMove(char identifier)
         {
             if (identifier == 'X' || identifier == 'A')

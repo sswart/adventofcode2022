@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
-using static dotnet.Day2;
+using static dotnet.Day2.Day2Impl;
 
-namespace dotnet
+namespace dotnet.Day2.Day2
 {
     public class TestDay2
     {
@@ -16,7 +16,7 @@ namespace dotnet
         {
             var lines = File.ReadAllLines("day2sample.txt");
 
-            Day2.GetScore(lines).Should().Be(15);
+            GetScore(lines).Should().Be(15);
         }
 
         [Fact]
@@ -33,7 +33,7 @@ namespace dotnet
         {
             var lines = File.ReadAllLines("day2sample.txt");
 
-            Day2.PredictMove(lines).Should().Be(12);
+            PredictMove(lines).Should().Be(12);
         }
     }
 }
