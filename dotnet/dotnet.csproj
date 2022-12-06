@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -11,6 +11,8 @@
     <None Remove="Day2\day2sample.txt" />
     <None Remove="Day3\day3part2sample.txt" />
     <None Remove="Day3\sample.txt" />
+    <None Remove="Day4\Day4Input1.txt" />
+    <None Remove="Day4\Day4Sample1.txt" />
   </ItemGroup>
 
 	<Target Name="CopyCustomContent" AfterTargets="AfterBuild">
@@ -19,6 +21,8 @@
 		<Copy SourceFiles="Day3\sample.txt" DestinationFolder="$(OutDir)" />
 		<Copy SourceFiles="Day3\day3input.txt" DestinationFolder="$(OutDir)" />
 		<Copy SourceFiles="Day3\day3part2sample.txt" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="Day4\Day4Sample1.txt" DestinationFolder="$(OutDir)" />
+		<Copy SourceFiles="Day4\Day4Input1.txt" DestinationFolder="$(OutDir)" />
 
 	</Target>
   <ItemGroup>
@@ -32,6 +36,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Day3\sample.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Day4\Day4Input1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Day4\Day4Sample1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
