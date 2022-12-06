@@ -11,9 +11,11 @@ fn main() {
     let split = get_lines(&file);
     let values = get_values(split);
 
-    let max = values.iter().max_by(|a,b| a.1.cmp(&b.1)).unwrap();
+    let mut a: Vec<i32> = values.into_values().collect();
+    a.sort_by(|a,b| b.cmp(&a));
+    let top3: i32 = a[0..3].iter().sum();
 
-    println!("Max index/value {max:?}");
+    println!("Top3 {top3}");
 }
 
 fn get_values(split: Vec<String>) -> HashMap<i32, i32> {
@@ -77,5 +79,10 @@ mod tests{
 
         assert_eq!(values[&0], 3);
         assert_eq!(values[&1], 8);
+    }
+
+    #[test]
+    fn get_top3(){
+
     }
 }
