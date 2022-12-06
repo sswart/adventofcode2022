@@ -27,5 +27,13 @@ namespace dotnet
 
             paper.Outcome(rock).Should().Be(8);
         }
+
+        [Fact]
+        public void PredictMove_Gives_12()
+        {
+            var lines = File.ReadAllLines("day2sample.txt");
+
+            Day2.PredictMove(lines).Should().Be(12);
+        }
     }
 }

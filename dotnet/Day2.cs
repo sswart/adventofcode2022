@@ -9,6 +9,52 @@ namespace dotnet
 {
     internal class Day2
     {
+        public static int PredictMove(string[] lines) 
+        {
+            int score = 0;
+            foreach(var line in lines)
+            {
+                var chars = line.Split(' ').Select(c => c.First()).ToArray();
+                if (chars.Length != 2)
+                {
+                    throw new ArgumentException($"Invalid data on line: {line}");
+                }
+
+                var p1 = ParseMove(chars[0]);
+                var expectedOutcome = GetDesiredOutcome(chars[1]);
+
+                switch (expectedOutcome)
+                {
+                    case Outcome.Draw:
+                        score += p1.Outcome(p1);
+                        break;
+                    case Outcome.Win:
+                        score += AllMoves.First(m => m.WinsFrom(p1)).Outcome(p1);
+                        break;
+                    case Outcome.Lose:
+                        score += AllMoves.First(m => !m.WinsFrom(p1) && m.Score != p1.Score).Outcome(p1);
+                        break;
+                    default:
+                        throw new NotImplementedException();
+
+                }
+            }
+            return score;
+        }
+
+        private static readonly Move[] AllMoves = new Move[]
+        {
+            new Rock(),
+            new Paper(),
+            new Scissors()
+        };
+
+        private static Outcome GetDesiredOutcome(char character)
+        {
+            return character == 'X' ? Outcome.Lose : character == 'Y' ? Outcome.Draw : character == 'Z' ? Outcome.Win : throw new ArgumentException("invalid input");
+        }
+
+
         public static int GetScore(string[] lines)
         {
             int score = 0;
@@ -51,6 +97,7 @@ namespace dotnet
         {
             int Score { get; }
             int Outcome(Move other);
+            bool WinsFrom(Move other);
 
         }
         public class Rock : Move
@@ -69,6 +116,8 @@ namespace dotnet
                 }
                 return Score + 6;
             }
+
+            public bool WinsFrom(Move other) => other is Scissors;
         }
 
         public class Paper : Move
@@ -87,6 +136,8 @@ namespace dotnet
                 }
                 return Score + 6;
             }
+
+            public bool WinsFrom(Move other) => other is Rock;
         }
 
         public class Scissors : Move
@@ -105,6 +156,8 @@ namespace dotnet
                 }
                 return Score + 6;
             }
+
+            public bool WinsFrom(Move other) => other is Paper;
         }
 
         public enum Outcome
