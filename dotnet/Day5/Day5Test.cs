@@ -44,5 +44,19 @@ namespace dotnet.Day5
             stacks[1].Pop().Should().Be('M');
             stacks[2].Pop().Should().Be('Z');
         }
+
+        [Fact]
+        public void Transform_9001()
+        {
+            var lines = File.ReadAllLines("Day5Sample.txt");
+            var stacks = Day5.GetStacks(lines);
+            var instructions = Day5.GetInstructions(lines);
+
+            Day5.Transform9001(stacks, instructions);
+
+            stacks[0].Pop().Should().Be('M');
+            stacks[1].Pop().Should().Be('C');
+            stacks[2].Pop().Should().Be('D');
+        }
     }
 }

@@ -8,6 +8,26 @@ namespace dotnet.Day5
 {
     internal class Day5
     {
+        public static void Transform9001(Stack<char>[] stacks, Instruction[] instructions)
+        {
+            foreach(var instruction in instructions)
+            {
+                var toMove = PopMultiple(stacks[instruction.From - 1], instruction.Quantity).Reverse().ToArray();
+                foreach(var item in toMove)
+                {
+                    stacks[instruction.To - 1].Push(item);
+                }
+            }
+        }
+
+        private static IEnumerable<T> PopMultiple<T>(Stack<T> stack, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return stack.Pop();
+            }
+        }
+
         public static void Transform(Stack<char>[] stacks, Instruction[] instructions)
         {
             foreach(var instruction in instructions)

@@ -8,6 +8,6 @@ var lines = File.ReadAllLines("Day5Input.txt");
 
 var stacks = Day5.GetStacks(lines);
 var instructions = Day5.GetInstructions(lines);
-Day5.Transform(stacks, instructions);
+Day5.Transform9001(stacks, instructions);
 
 Console.WriteLine(stacks.Select(s => s.Pop()).ToArray());
